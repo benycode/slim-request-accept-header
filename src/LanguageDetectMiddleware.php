@@ -35,7 +35,7 @@ final class LanguageDetectMiddleware implements MiddlewareInterface
 			  }, []);
 			arsort($prefLocales);
 			
-			$language = reset($prefLocales);
+			$language = array_key_first($prefLocales);
 		}
 		
         $request = $request
