@@ -38,6 +38,12 @@ final class LanguageDetectMiddleware implements MiddlewareInterface
 			$language = array_key_first($prefLocales);
 		}
 		
+		if(!\in_array($language, $this->languageList)){
+			$language = $this
+				->defaultLanguage
+			;
+		}
+		
         $request = $request
             ->withAttribute('accept-language', $language)
 		;
@@ -47,5 +53,3 @@ final class LanguageDetectMiddleware implements MiddlewareInterface
 		;
     }
 }
-
-
